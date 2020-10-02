@@ -1,10 +1,7 @@
 import React from "react";
-import {
-  createAppContainer,
-  createSwitchNavigator,
-  createBottomTabNavigator,
-  createStackNavigator,
-} from "react-navigation";
+import { createAppContainer, createSwitchNavigator } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
+import { createBottomTabNavigator } from "react-navigation-tabs";
 import { StyleSheet, Text, View } from "react-native";
 import AccountScreen from "./src/screens/AccountScreen";
 import SigninScreen from "./src/screens/SigninScreen";
@@ -23,9 +20,11 @@ const switchNavigator = createSwitchNavigator({
       TrackList: TrackListScreen,
       TrackDetail: TrackDetailScreen,
     }),
-    Account: AccountScreen,
     TrackCreate: TrackCreateScreen,
+    Account: AccountScreen,
   }),
 });
 
 const styles = StyleSheet.create({});
+
+export default createAppContainer(switchNavigator);
