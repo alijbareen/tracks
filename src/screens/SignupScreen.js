@@ -9,10 +9,9 @@ const SignupScreen = ({ navigation }) => {
       <Spacer>
         <Text h3>Sign Up for Tracker</Text>
       </Spacer>
-      <input label="Email" />
+      <Input label="Email" />
       <Spacer />
-      <input label="Password" />
-
+      <Input label="Password" />
       <Spacer>
         <Button title="Sign Up" />
       </Spacer>
