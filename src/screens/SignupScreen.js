@@ -1,49 +1,21 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { View, StyleSheet } from "react-native";
-import { Text, Input, Button } from "react-native-elements";
-import { State } from "react-native-gesture-handler";
-import Spacer from "../components/Spacer";
 import { Context as AuthContext } from "../context/AuthContext";
+import AuthForm from "../components/AuthForm";
+import NavLink from "../components/NavLink";
 
 const SignupScreen = ({ navigation }) => {
   const { state, signup } = useContext(AuthContext);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
 
   return (
     <View style={styles.container}>
-      <Spacer>
-        <Text h3>Sign Up for Tracker</Text>
-      </Spacer>
-      <Input
-        autoCapitalize="none"
-        autoCorrect={false}
-        label="Email"
-        value={email}
-        onChangeText={setEmail}
+      <AuthForm
+        headerText="Sign Up for Tracker !"
+        errorMessage={state.errorMessage}
+        submitButtonText="Sgin Up !"
+        onSubmit={signup}
       />
-      <Spacer />
-      <Input
-        autoCapitalize="none"
-        autoCorrect={false}
-        secureTextEntry
-        label="Password"
-        value={password}
-        onChangeText={setPassword}
-      />
-
-      {state.errorMessage ? (
-        <Text style={styles.errorMessage}>{State.errorMessage}</Text>
-      ) : null}
-
-      <Spacer>
-        <Button
-          onPress={() => {
-            signup({ email, password });
-          }}
-          title="Sign Up"
-        />
-      </Spacer>
+      <NavLink routeName="Signin" text="Already have an Account ? Sign In" />
     </View>
   );
 };
@@ -53,17 +25,16 @@ SignupScreen.navigationOptions = () => {
     header: () => false,
   };
 };
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
     marginBottom: 150,
   },
-  errorMessage: {
-    fontSize: 16,
-    color: "red",
-    marginLeft: 15,
-    marginTop: 15,
+
+  link: {
+    color: "blue",
   },
 });
 
