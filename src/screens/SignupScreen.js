@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { View, StyleSheet } from "react-native";
 import { Text, Input, Button } from "react-native-elements";
+import { State } from "react-native-gesture-handler";
 import Spacer from "../components/Spacer";
 import { Context as AuthContext } from "../context/AuthContext";
 
@@ -30,6 +31,11 @@ const SignupScreen = ({ navigation }) => {
         value={password}
         onChangeText={setPassword}
       />
+
+      {state.errorMessage ? (
+        <Text style={styles.errorMessage}>{State.errorMessage}</Text>
+      ) : null}
+
       <Spacer>
         <Button
           onPress={() => {
@@ -52,6 +58,10 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     marginBottom: 150,
+  },
+  errorMessage: {
+    fontSize: 16,
+    color: "red",
   },
 });
 
