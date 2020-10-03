@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 import {
   Accuracy,
   requestPermissionsAsync,
   watchPositionAsync,
-} from "expo-location";
+} from 'expo-location';
 
 export default (shouldTrack, callback) => {
   const [err, setErr] = useState(null);
@@ -14,7 +14,7 @@ export default (shouldTrack, callback) => {
       try {
         const { granted } = await requestPermissionsAsync();
         if (!granted) {
-          throw new Error("Location permission not granted");
+          throw new Error('Location permission not granted');
         }
         subscriber = await watchPositionAsync(
           {
